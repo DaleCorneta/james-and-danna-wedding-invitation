@@ -32,17 +32,22 @@
 .browser-tip__pointer {
   position: absolute;
   top: max(8px, env(safe-area-inset-top));
-  right: max(16px, env(safe-area-inset-right));
+  right: max(6px, env(safe-area-inset-right));
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 0.875rem;
+  gap: 12px;
+  padding: 6px 12px 6px 16px;
+  border-radius: 24px;
+  background: #832b39;
+  color: #fff8ef;
+  font: 700 0.9375rem / 1.3 Georgia, serif;
+  box-shadow: 0 3px 10px #832b3933;
 }
 
 .browser-tip__arrow {
   position: relative;
-  width: 2px;
-  height: 26px;
+  width: 3px;
+  height: 28px;
   margin-inline: 6px;
   background: currentColor;
 }
@@ -50,17 +55,26 @@
 .browser-tip__arrow::before {
   position: absolute;
   top: 0;
-  left: -4px;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-left: 2px solid currentColor;
+  left: -5px;
+  width: 13px;
+  height: 13px;
+  border-top: 3px solid currentColor;
+  border-left: 3px solid currentColor;
   transform: rotate(45deg);
   content: '';
 }
 
-.browser-tip:has(.browser-tip__pointer) {
-  padding-top: max(52px, calc(env(safe-area-inset-top) + 44px));
+.browser-tip--iphone {
+  padding-top: max(64px, calc(env(safe-area-inset-top) + 56px));
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .browser-tip__pointer { animation: point-to-menu 950ms ease-in-out 3; }
+}
+
+@keyframes point-to-menu {
+  0%, 100% { transform: translateY(0); }
+  45% { transform: translateY(-6px); }
 }
 
 .browser-tip__steps {
@@ -69,6 +83,25 @@
   padding-inline-start: 1.4em;
   list-style: decimal;
   text-align: start;
+}
+
+.browser-tip__steps li {
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: #f2ead9;
+}
+
+.browser-tip__steps li::marker {
+  color: #832b39;
+  font-weight: bold;
+}
+
+.browser-tip__steps strong { display: block; color: #832b39; }
+.browser-tip__steps span { display: block; margin-top: 2px; }
+
+@media (max-height: 440px) and (orientation: landscape) {
+  .browser-tip--iphone .browser-tip__inner { width: min(100%, 34rem); padding: 16px 22px; }
+  .browser-tip--iphone h1 { font-size: 1.5rem; }
 }
 
 .browser-tip__open {

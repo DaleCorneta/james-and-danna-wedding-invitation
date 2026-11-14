@@ -20,19 +20,19 @@ export function BrowserTip() {
   const isIPhone = /\biPhone\b/i.test(navigator.userAgent);
 
   return (
-    <section className="browser-tip" aria-labelledby="browser-tip-title">
+    <section className={isIPhone ? 'browser-tip browser-tip--iphone' : 'browser-tip'} aria-labelledby="browser-tip-title">
       {isIPhone && (
         <div className="browser-tip__pointer" aria-hidden="true">
-          <span>App menu</span>
+          <span>Tap &#8943; above</span>
           <span className="browser-tip__arrow" />
         </div>
       )}
       <div className="browser-tip__inner">
-        <h1 id="browser-tip-title">Open the wedding invitation in your browser</h1>
+        <h1 id="browser-tip-title">{isIPhone ? 'Open your wedding invitation' : 'Open the wedding invitation in your browser'}</h1>
         {isIPhone && (
           <ol className="browser-tip__steps">
-            <li>Tap <strong>⋯</strong> in the top-right corner of the app toolbar, above this page.</li>
-            <li>Choose <strong>Open in browser</strong> or <strong>Open in external browser</strong>.</li>
+            <li><strong>Tap the three dots (&#8943;)</strong><span>Look at the top right of the app toolbar, just above the arrow.</span></li>
+            <li><strong>Choose Open in browser</strong><span>It may say “Open in external browser.” The full invitation will open there.</span></li>
           </ol>
         )}
         {handoff && (

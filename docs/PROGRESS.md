@@ -2,6 +2,7 @@
 
 ## iPhone browser option
 
+- The iPhone guide uses a high-contrast burgundy arrow that nudges upward three times and stays static with reduced motion. Two numbered steps lead with the actions guests need to take. Chromium and WebKit verified portrait and landscape fit, reduced motion, and the Android browser button.
 - The iPhone in-app cover now points toward the top-right app menu and explains how to open the full invitation in the external browser. The Chrome and new-window buttons were removed after they failed on the owner's iPhone. Android retains its browser button.
 - Build, type-check and lint passed. Chromium verified simulated iPhone portrait and landscape cover layouts, Android's browser button, and curtain loading in a standalone browser. Alignment with the native Messenger toolbar remains unverified on a physical iPhone.
 
