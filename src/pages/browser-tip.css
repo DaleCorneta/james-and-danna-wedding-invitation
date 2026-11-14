@@ -1,4 +1,5 @@
 .browser-tip {
+  position: relative;
   display: grid;
   min-height: 100vh;
   min-height: 100svh;
@@ -28,7 +29,47 @@
   gap: 8px;
 }
 
-.browser-tip__actions + p { margin-top: 12px; }
+.browser-tip__pointer {
+  position: absolute;
+  top: max(8px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+}
+
+.browser-tip__arrow {
+  position: relative;
+  width: 2px;
+  height: 26px;
+  margin-inline: 6px;
+  background: currentColor;
+}
+
+.browser-tip__arrow::before {
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-left: 2px solid currentColor;
+  transform: rotate(45deg);
+  content: '';
+}
+
+.browser-tip:has(.browser-tip__pointer) {
+  padding-top: max(52px, calc(env(safe-area-inset-top) + 44px));
+}
+
+.browser-tip__steps {
+  display: grid;
+  gap: 10px;
+  padding-inline-start: 1.4em;
+  list-style: decimal;
+  text-align: start;
+}
 
 .browser-tip__open {
   display: inline-flex;
@@ -39,11 +80,6 @@
   background: #29382e;
   color: #fff6e3;
   text-decoration: none;
-}
-
-.browser-tip__open--secondary {
-  background: transparent;
-  color: #29382e;
 }
 
 .browser-tip__open:focus-visible { outline: 2px solid #29382e; outline-offset: 2px; }

@@ -2,7 +2,8 @@
 
 ## iPhone browser option
 
-- The iPhone cover offers Chrome and a regular HTTPS link that requests a new browser window. Messenger controls where that window opens. Build, type-check and lint passed. Chromium verified the two links and new-window navigation with an iPhone Messenger user agent. The external handoff remains unverified on a physical iPhone.
+- The iPhone in-app cover now points toward the top-right app menu and explains how to open the full invitation in the external browser. The Chrome and new-window buttons were removed after they failed on the owner's iPhone. Android retains its browser button.
+- Build, type-check and lint passed. Chromium verified simulated iPhone portrait and landscape cover layouts, Android's browser button, and curtain loading in a standalone browser. Alignment with the native Messenger toolbar remains unverified on a physical iPhone.
 
 ## Safari handoff and invitation loading
 
