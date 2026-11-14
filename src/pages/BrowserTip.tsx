@@ -5,12 +5,17 @@ function getBrowserHandoff() {
   if (url.protocol !== 'https:' && url.protocol !== 'http:') return;
 
   url.searchParams.delete('fbclid');
-  if (/\b(?:iPhone|iPad|iPod)\b/i.test(navigator.userAgent) && url.protocol === 'https:') {
-    return { href: `x-safari-${url.href}`, label: 'Open in Safari' };
+  const scheme = url.protocol.slice(0, -1);
+  if (/\b(?:iPhone|iPad|iPod)\b/i.test(navigator.userAgent)) {
+    return {
+      href: url.href.replace(/^https?:/, scheme === 'https' ? 'googlechromes:' : 'googlechrome:'),
+      label: 'Open in Chrome',
+      defaultBrowserUrl: url.href,
+    };
   }
+
   if (!/\bAndroid\b/i.test(navigator.userAgent)) return;
 
-  const scheme = url.protocol.slice(0, -1);
   return {
     href: `intent://${url.host}${url.pathname}${url.search}${url.hash}#Intent;scheme=${scheme};action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;S.browser_fallback_url=${encodeURIComponent(url.href)};end`,
     label: 'Open in default browser',
@@ -25,9 +30,17 @@ export function BrowserTip() {
       <div className="browser-tip__inner">
         <h1 id="browser-tip-title">Open the wedding invitation in your browser</h1>
         {handoff && (
-          <a className="browser-tip__open" href={handoff.href}>{handoff.label}</a>
+          <div className="browser-tip__actions">
+            <a className="browser-tip__open" href={handoff.href}>{handoff.label}</a>
+            {handoff.defaultBrowserUrl && (
+              <a className="browser-tip__open browser-tip__open--secondary" href={handoff.defaultBrowserUrl} target="_blank" rel="noopener noreferrer">
+                Try default browser
+              </a>
+            )}
+          </div>
         )}
-        <p>{handoff ? 'If the invitation stays here, tap' : 'Tap'} the app menu (⋯) and choose <strong>Open in browser</strong>, if available.</p>
+        {handoff?.defaultBrowserUrl && <p>Messenger may keep the new window inside the app.</p>}
+        {!handoff && <p>Open this invitation in a standalone browser.</p>}
       </div>
     </section>
   );

@@ -1,8 +1,12 @@
 # Progress
 
+## iPhone browser option
+
+- The iPhone cover offers Chrome and a regular HTTPS link that requests a new browser window. Messenger controls where that window opens. Build, type-check and lint passed. Chromium verified the two links and new-window navigation with an iPhone Messenger user agent. The external handoff remains unverified on a physical iPhone.
+
 ## Safari handoff and invitation loading
 
-- The in-app cover offers a direct Safari link on iPhone and iPad over HTTPS. The app-menu handoff remains available if Messenger blocks the link or guests prefer their configured browser.
+- The direct Safari link failed in Messenger on the owner's iPhone. The iPhone cover now offers a direct Chrome link and shows that Chrome is required. Android retains its browser intent. Chromium verified both generated links. Launching Chrome from Messenger on a physical iPhone remains unverified.
 - An opaque loading screen covers startup and lazy loading, then clears after the initial curtain draw or the reduced-motion layout is ready. Static RSVP details remain accessible when JavaScript is disabled or the app fails to start.
 - Build, type-check and lint passed. Chromium and WebKit checked delayed scene loading, the opaque curtain at reveal, reduced motion, disabled JavaScript, canvas initialization failure, and both handoff URLs. The Safari handoff still needs a physical Messenger test.
 

@@ -21,15 +21,29 @@
 
 .browser-tip h1 { margin-bottom: 12px; font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
 
+.browser-tip__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.browser-tip__actions + p { margin-top: 12px; }
+
 .browser-tip__open {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   padding-inline: 12px;
-  margin-bottom: 16px;
+  border: 1px solid #29382e;
   background: #29382e;
   color: #fff6e3;
   text-decoration: none;
+}
+
+.browser-tip__open--secondary {
+  background: transparent;
+  color: #29382e;
 }
 
 .browser-tip__open:focus-visible { outline: 2px solid #29382e; outline-offset: 2px; }
