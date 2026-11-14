@@ -2,9 +2,9 @@
 
 ## Facebook and Messenger compatibility
 
-- Detected Facebook and Messenger browsers display a dedicated browser handoff cover. Android offers an unpinned browser intent. The app menu and copy-link fallback are available on all devices.
+- Detected Facebook and Messenger browsers display a dedicated browser handoff cover. Android offers an unpinned browser intent. The cover points guests to the app menu on iPhone or if the Android handoff is blocked.
 - Standalone browsers load the cinematic invitation and its embedded RSVP. The in-app cover requests neither the cinematic assets nor the portrait and mounts no RSVP frame.
-- Build, type-check and lint passed. Chromium and WebKit verified the cover for simulated Android Messenger, iPhone Messenger and Android Facebook, the Android intent URL, manual copy, responsive fit and standalone curtain loading. Physical app-to-browser handoff remains unverified.
+- Build, type-check and lint passed. Chromium and WebKit verified the cover, Android intent URL, responsive fit and standalone curtain loading. Chromium rechecked the Android button and iPhone app-menu instructions after the copy action was removed. Physical app-to-browser handoff remains unverified.
 
 ## Mobile scrolling
 

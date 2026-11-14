@@ -21,41 +21,15 @@
 
 .browser-tip h1 { margin-bottom: 12px; font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
 
-.browser-tip__actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 4px 8px;
-  margin-top: 16px;
-}
-
-.browser-tip button,
-.browser-tip__actions a {
+.browser-tip__open {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
   padding-inline: 12px;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.browser-tip__actions > :first-child {
+  margin-bottom: 16px;
   background: #29382e;
   color: #fff6e3;
   text-decoration: none;
 }
 
-.browser-tip button:focus-visible,
-.browser-tip a:focus-visible,
-.browser-tip input:focus-visible { outline: 2px solid #29382e; outline-offset: 2px; }
-
-.browser-tip [role='status']:not(:empty) { margin-top: 8px; }
-
-.browser-tip input {
-  width: 100%;
-  min-height: 44px;
-  margin-top: 6px;
-  padding: 8px;
-  border: 1px solid #9e8964;
-  font-size: 1rem;
-}
+.browser-tip__open:focus-visible { outline: 2px solid #29382e; outline-offset: 2px; }
