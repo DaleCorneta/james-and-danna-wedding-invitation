@@ -9,10 +9,12 @@ import { Scene08Palette } from '../scenes/Scene08Palette/Scene08Palette';
 import { Scene09Notes } from '../scenes/Scene09Notes/Scene09Notes';
 import { Scene10Respond } from '../scenes/Scene10Respond/Scene10Respond';
 import { Scene11Closing } from '../scenes/Scene11Closing/Scene11Closing';
+import { BrowserTip } from './BrowserTip';
 
 export function HomePage() {
   return (
     <>
+      <BrowserTip />
       <Scene01Unveiling />
       <Scene02Moment />
       <Scene03Written />

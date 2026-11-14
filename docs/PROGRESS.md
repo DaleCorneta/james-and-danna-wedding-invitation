@@ -1,5 +1,17 @@
 # Progress
 
+## Mobile scrolling
+
+- Touch layouts use the stable small viewport for sticky scenes and overlap distances. The notes-to-RSVP handoff now uses the same scene measurements as the CSS. Desktop retains its existing viewport sizing and opening timing.
+- Shortened the touch opening travel and reduced the curtain's animation delay, canvas resolution and mesh density on touch screens. At 390×844, the opening travel dropped from 1,333 to 1,012 CSS pixels.
+- In two Chromium runs with 4× CPU throttling, median mobile curtain drawing dropped from roughly 17 ms to 11 ms. The slowest frames still varied between runs.
+- Build, type-check and lint passed. Chromium and WebKit verified portrait and landscape layouts, the curtain opening and reversal, viewport rotation, the test RSVP frame, closing replay and reduced motion. Chromium also verified a native touch swipe. The tested desktop scroll height and opening travel matched the prior build. Physical mobile browser toolbar and gesture behavior remain unverified.
+
+## Messenger browser tip
+
+- Added a dismissible tip above the invitation for detected Messenger and Facebook in-app browsers. It explains the app menu option, copies the current link without Facebook's tracking parameter, and offers a selectable link if clipboard access fails.
+- Build, type-check and lint passed. Chromium and WebKit checks covered simulated Messenger on iOS and Android, portrait and landscape layouts, clipboard success and rejection, dismissal and focus, and interaction with a test RSVP frame. Standalone browser identities hid the tip. Physical Messenger and Safari, standalone Edge and Firefox, and live RSVP submission were not verified in this pass.
+
 ## Performance and RSVP reliability
 
 - Switched to declarative routing, cached static canvas calculations, skipped duplicate curtain frames and enabled asynchronous portrait decoding. Kept the route behavior and reversible scene transitions.

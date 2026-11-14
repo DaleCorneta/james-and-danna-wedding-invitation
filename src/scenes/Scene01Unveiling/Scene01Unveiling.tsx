@@ -19,6 +19,7 @@ export function Scene01Unveiling() {
     const canvas = curtainRef.current;
     if (!scene || !stage || !canvas) return;
 
+    const touch = window.matchMedia('(pointer: coarse)');
     const cloth = { open: 0 };
     let width = stage.clientWidth;
     let height = stage.clientHeight;
@@ -27,10 +28,10 @@ export function Scene01Unveiling() {
     const paint = () => {
       if (!animated) return;
       const open = Math.round(cloth.open * 600) / 600;
-      const frame = `${width}:${height}:${window.devicePixelRatio}:${open}`;
+      const frame = `${width}:${height}:${window.devicePixelRatio}:${open}:${touch.matches}`;
       if (frame === lastFrame) return;
       lastFrame = frame;
-      drawCurtains(canvas, width, height, open);
+      drawCurtains(canvas, width, height, open, touch.matches);
     };
     const resize = new ResizeObserver(() => {
       width = stage.clientWidth;
@@ -38,6 +39,7 @@ export function Scene01Unveiling() {
       paint();
     });
     resize.observe(stage);
+    touch.addEventListener('change', paint);
 
     const media = gsap.matchMedia(scene);
     media.add({ animated: '(prefers-reduced-motion: no-preference)', still: '(prefers-reduced-motion: reduce)' }, ({ conditions }) => {
@@ -52,7 +54,7 @@ export function Scene01Unveiling() {
           trigger: scene,
           start: 'top top',
           end: () => `+=${scene.querySelector<HTMLElement>('.unveiling__endpoint')?.offsetTop ?? 0}`,
-          scrub: 0.28,
+          scrub: touch.matches ? 0.14 : 0.28,
           invalidateOnRefresh: true,
         },
       });
@@ -97,6 +99,7 @@ export function Scene01Unveiling() {
 
     return () => {
       resize.disconnect();
+      touch.removeEventListener('change', paint);
       media.revert();
     };
   }, []);

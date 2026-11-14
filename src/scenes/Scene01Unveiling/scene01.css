@@ -1,5 +1,5 @@
 .unveiling {
-  --stage-height: 100dvh;
+  --stage-height: var(--scene-height);
   --scroll-distance: clamp(720px, 158svh, 1480px);
   --ink: #26312a;
   --ivory: #f8f4e7;
@@ -20,6 +20,10 @@
   overflow: clip;
   isolation: isolate;
   background: radial-gradient(ellipse at 48% 40%, #f9f5e7, #e7e9d8 62%, #c9d1b9);
+}
+
+@media (pointer: coarse) {
+  .unveiling { --scroll-distance: clamp(470px, 120svh, 1120px); }
 }
 
 .unveiling__engraving,
@@ -270,7 +274,7 @@
 
 .unveiling__card {
   position: relative;
-  width: min(83%, 32rem, 57dvh);
+  width: min(83%, 32rem, calc(0.57 * var(--scene-height)));
   aspect-ratio: 1.25;
   perspective: 1050px;
 }
@@ -328,7 +332,7 @@
 
 .unveiling__face--front {
   grid-template-rows: auto minmax(0, 1fr);
-  gap: clamp(6px, 1.4dvh, 14px);
+  gap: clamp(6px, calc(0.014 * var(--scene-height)), 14px);
   padding: clamp(9px, 2.2vw, 17px);
 }
 
@@ -352,16 +356,16 @@
   transform: rotateY(180deg);
   align-content: center;
   justify-items: center;
-  gap: clamp(5px, 1.3dvh, 14px);
+  gap: clamp(5px, calc(0.013 * var(--scene-height)), 14px);
   padding: 8px 12px;
   background: radial-gradient(ellipse at 50% 38%, #fff9e9, #ecebd8);
   text-align: center;
-  font: 400 clamp(0.75rem, 2.1dvh, 1rem) / 1.35 var(--serif);
+  font: 400 clamp(0.75rem, calc(0.021 * var(--scene-height)), 1rem) / 1.35 var(--serif);
 }
 
 .unveiling__face--back h2 {
   font-family: var(--script);
-  font-size: clamp(1.5rem, 6.2dvh, 3.6rem);
+  font-size: clamp(1.5rem, calc(0.062 * var(--scene-height)), 3.6rem);
   line-height: 0.95;
 }
 
@@ -429,7 +433,7 @@
     inset: 32% 0 4%;
   }
 
-  .unveiling__card { width: min(78%, 54dvh); }
+  .unveiling__card { width: min(78%, calc(0.54 * var(--scene-height))); }
 
 
 }
@@ -453,7 +457,7 @@
   .unveiling__inscription {
     --title-scale: 0.73;
     --matte-opacity: 0;
-    transform: translateY(-30dvh);
+    transform: translateY(calc(-0.3 * var(--scene-height)));
   }
 
   .unveiling__face--back { transform: none; }

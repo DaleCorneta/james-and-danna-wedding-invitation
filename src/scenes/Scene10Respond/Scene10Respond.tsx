@@ -24,14 +24,15 @@ export function Scene10Respond() {
         scrollTrigger: {
           trigger: section,
           start: 'top top',
-          end: () => `+=${section.offsetHeight - stage.offsetHeight - window.innerHeight}`,
+          end: () => `+=${section.offsetHeight - 2 * stage.offsetHeight}`,
+          invalidateOnRefresh: true,
           scrub: 0.24,
         },
       })
         .fromTo(envelope, { '--response-seal': 1 }, { '--response-seal': 0, duration: 0.14 }, 0.08)
         .fromTo(envelope, { '--response-flap': '0deg' }, { '--response-flap': '-166deg', duration: 0.24 }, 0.19)
         .from('.respond__card', {
-          autoAlpha: 0, y: '36dvh', scale: 0.72, clipPath: 'inset(0% 0% 100% 0%)', duration: 0.36,
+          autoAlpha: 0, y: () => stage.offsetHeight * 0.36, scale: 0.72, clipPath: 'inset(0% 0% 100% 0%)', duration: 0.36,
         }, 0.35)
         .to(envelope, { y: 70, opacity: 0, duration: 0.25 }, 0.49)
         .from('.respond__light', { opacity: 0, duration: 0.45 }, 0.55);

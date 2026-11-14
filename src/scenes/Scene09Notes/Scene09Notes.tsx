@@ -44,7 +44,11 @@ export function Scene09Notes() {
         defaults: { ease: 'sine.inOut' },
         scrollTrigger: {
           trigger: ending, start: 'top 92%',
-          end: () => ending.getBoundingClientRect().bottom + window.scrollY - handoff.clientHeight - window.innerHeight,
+          end: () => {
+            // The handoff is one and a half scene heights, including when the phone toolbar moves.
+            const sceneHeight = handoff.clientHeight / 1.5;
+            return ending.getBoundingClientRect().bottom + window.scrollY - handoff.clientHeight - sceneHeight;
+          },
           scrub: 0.24,
           invalidateOnRefresh: true,
         },

@@ -3,13 +3,13 @@
   --families-rule: #9c885a75;
   --families-serif: 'Baskervville', Baskerville, Georgia, serif;
   position: relative;
-  margin-top: -200dvh;
+  margin-top: calc(-2 * var(--scene-height));
   color: var(--families-ink);
   pointer-events: none;
 }
 
 .families__entrance {
-  min-height: calc(200dvh + 44svh);
+  min-height: calc(2 * var(--scene-height) + 44svh);
   pointer-events: none;
 }
 
@@ -19,7 +19,7 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   padding: max(32px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
     max(32px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
   overflow: clip;

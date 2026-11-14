@@ -3,8 +3,8 @@
   --venue-brass: #866940;
   --venue-serif: 'Baskervville', Baskerville, Georgia, serif;
   position: relative;
-  min-height: calc(300dvh + 46svh);
-  margin-top: -200dvh;
+  min-height: calc(3 * var(--scene-height) + 46svh);
+  margin-top: calc(-2 * var(--scene-height));
   color: var(--venue-ink);
 }
 
@@ -13,7 +13,7 @@
   top: 0;
   display: grid;
   align-items: end;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   isolation: isolate;
   overflow: clip;
 }

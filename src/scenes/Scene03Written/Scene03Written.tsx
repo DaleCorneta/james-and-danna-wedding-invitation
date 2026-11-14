@@ -12,7 +12,8 @@ export function Scene03Written() {
 
   useLayoutEffect(() => {
     const scene = sceneRef.current;
-    if (!scene) return;
+    const stage = scene?.querySelector<HTMLElement>('.written__stage');
+    if (!scene || !stage) return;
 
     const media = gsap.matchMedia(scene);
     media.add('(prefers-reduced-motion: no-preference)', () => {
@@ -21,7 +22,7 @@ export function Scene03Written() {
         scrollTrigger: {
           trigger: scene,
           start: 'top top',
-          end: () => `+=${scene.offsetHeight - 2 * window.innerHeight}`,
+          end: () => `+=${scene.offsetHeight - 2 * stage.offsetHeight}`,
           scrub: 0.25,
         },
       })

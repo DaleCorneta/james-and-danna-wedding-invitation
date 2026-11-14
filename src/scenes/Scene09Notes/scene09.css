@@ -63,7 +63,7 @@
 
 .guest-notes__envelope-stage {
   position: sticky;
-  top: calc(100dvh - var(--envelope-stage-height));
+  top: calc(var(--scene-height) - var(--envelope-stage-height));
   display: grid;
   place-items: end center;
   min-height: var(--envelope-stage-height);
@@ -71,7 +71,7 @@
   perspective: 900px;
 }
 
-.guest-notes__handoff { height: 150dvh; }
+.guest-notes__handoff { height: calc(1.5 * var(--scene-height)); }
 
 .guest-notes__envelope {
   position: relative;

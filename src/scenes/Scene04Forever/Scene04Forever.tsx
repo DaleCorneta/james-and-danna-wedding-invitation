@@ -17,7 +17,8 @@ export function Scene04Forever() {
     const canvas = ringRef.current;
     const loop = scene?.previousElementSibling?.querySelector<HTMLElement>('.written__join');
     const mount = canvas?.parentElement;
-    if (!scene || !canvas || !loop || !mount) return;
+    const stage = mount?.closest<HTMLElement>('.forever__stage');
+    if (!scene || !canvas || !loop || !mount || !stage) return;
 
     const spin = { progress: 0 };
     let size = canvas.clientWidth;
@@ -41,7 +42,7 @@ export function Scene04Forever() {
         const source = loop.getBoundingClientRect();
         const target = mount.getBoundingClientRect();
         const previousTop = loop.closest('.written__stage')!.getBoundingClientRect().top;
-        const stageTop = mount.closest('.forever__stage')!.getBoundingClientRect().top;
+        const stageTop = stage.getBoundingClientRect().top;
         return {
           x: source.left + source.width / 2 - target.left - target.width / 2,
           y: source.top - previousTop + source.height / 2 - (target.top - stageTop + target.height / 2),
@@ -54,7 +55,7 @@ export function Scene04Forever() {
         scrollTrigger: {
           trigger: scene,
           start: 'top top',
-          end: () => `+=${scene.offsetHeight - 2 * window.innerHeight}`,
+          end: () => `+=${scene.offsetHeight - 2 * stage.offsetHeight}`,
           scrub: 0.25,
           invalidateOnRefresh: true,
           onRefreshInit: () => { origin = align(); },

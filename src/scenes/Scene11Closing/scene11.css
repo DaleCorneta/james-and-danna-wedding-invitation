@@ -1,7 +1,7 @@
 .closing {
   position: relative;
-  margin-top: -200dvh;
-  min-height: calc(200dvh + 35svh);
+  margin-top: calc(-2 * var(--scene-height));
+  min-height: calc(2 * var(--scene-height) + 35svh);
   color: #fff6e3;
   font-family: 'Baskervville', Baskerville, Georgia, serif;
   pointer-events: none;
@@ -13,7 +13,7 @@
   display: grid;
   grid-template-rows: 1fr auto;
   justify-items: center;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   padding: max(32px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right))
     max(26px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
   isolation: isolate;

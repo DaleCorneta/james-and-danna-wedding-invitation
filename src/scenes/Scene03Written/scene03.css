@@ -1,7 +1,7 @@
 .written {
   position: relative;
-  min-height: calc(300dvh + 26svh);
-  margin-top: -200dvh;
+  min-height: calc(3 * var(--scene-height) + 26svh);
+  margin-top: calc(-2 * var(--scene-height));
   color: #29352b;
 }
 
@@ -10,7 +10,7 @@
   top: 0;
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   padding: max(35px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
     max(35px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
   isolation: isolate;
@@ -91,7 +91,7 @@
 .written__botanicals {
   position: absolute;
   width: clamp(126px, 28vw, 400px);
-  height: clamp(122px, 28dvh, 320px);
+  height: clamp(122px, calc(0.28 * var(--scene-height)), 320px);
   pointer-events: none;
   filter: drop-shadow(3px 7px 6px #5d603c33);
 }
@@ -133,7 +133,7 @@
 }
 
 @media (max-height: 500px) {
-  .written__inscription h2 { font-size: clamp(2rem, 8.7dvh, 4.8rem); }
+  .written__inscription h2 { font-size: clamp(2rem, calc(0.087 * var(--scene-height)), 4.8rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {

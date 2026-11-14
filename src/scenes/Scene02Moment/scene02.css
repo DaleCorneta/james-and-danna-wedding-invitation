@@ -11,8 +11,8 @@
   --moment-brass: #896c44;
   --moment-serif: 'Baskervville', Baskerville, Georgia, serif;
   position: relative;
-  min-height: calc(300dvh + 35svh);
-  margin-top: -200dvh;
+  min-height: calc(3 * var(--scene-height) + 35svh);
+  margin-top: calc(-2 * var(--scene-height));
   color: var(--moment-ink);
 }
 
@@ -21,7 +21,7 @@
   top: 0;
   display: grid;
   align-items: center;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   padding: max(34px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
     max(34px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
   isolation: isolate;
@@ -89,7 +89,7 @@
 
 .moment__plate {
   position: relative;
-  width: min(100%, 43rem, 77dvh);
+  width: min(100%, 43rem, calc(0.77 * var(--scene-height)));
   margin-inline: auto;
   padding: clamp(8px, 1.3vw, 15px);
   border: 1px solid #928363;

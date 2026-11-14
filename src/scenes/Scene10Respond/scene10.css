@@ -1,7 +1,7 @@
 .respond {
   position: relative;
-  margin-top: -250dvh;
-  min-height: calc(350dvh + 18svh);
+  margin-top: calc(-2.5 * var(--scene-height));
+  min-height: calc(3.5 * var(--scene-height) + 18svh);
   pointer-events: none;
   color: #29382e;
   font-family: 'Baskervville', Baskerville, Georgia, serif;
@@ -13,7 +13,7 @@
   isolation: isolate;
   display: grid;
   place-items: center;
-  min-height: 100dvh;
+  min-height: var(--scene-height);
   padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
     max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
   overflow: clip;

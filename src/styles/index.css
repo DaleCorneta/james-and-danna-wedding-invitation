@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 :root {
+  --scene-height: 100dvh;
   font-family: Georgia, 'Times New Roman', serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -9,6 +10,10 @@
 
   color: #1c1917;
   background: #faf9f6;
+}
+
+@media (pointer: coarse) {
+  :root { --scene-height: 100svh; }
 }
 
 * {

@@ -37,11 +37,11 @@ const colors = Array.from({ length: 1025 }, (_, index) => {
   return `rgb(${Math.round(59 + light * 208)} ${Math.round(42 + light * 198)} ${Math.round(30 + light * 180)})`;
 });
 
-export function drawCurtains(canvas: HTMLCanvasElement, width: number, height: number, open: number) {
+export function drawCurtains(canvas: HTMLCanvasElement, width: number, height: number, open: number, touch: boolean) {
   const context = canvas.getContext('2d');
   if (!context || !width || !height) return;
 
-  const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+  const ratio = Math.min(window.devicePixelRatio || 1, touch ? 1 : 1.5);
   const pixelWidth = Math.round(width * ratio);
   const pixelHeight = Math.round(height * ratio);
   if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
@@ -50,7 +50,7 @@ export function drawCurtains(canvas: HTMLCanvasElement, width: number, height: n
   }
   context.setTransform(ratio, 0, 0, ratio, 0, 0);
   context.clearRect(0, 0, width, height);
-  const strips = width < 700 ? 144 : 224;
+  const strips = touch ? (width < 700 ? 96 : 144) : (width < 700 ? 144 : 224);
   let panels = meshes.get(strips);
   if (!panels) {
     panels = [createPanel(strips, 0), createPanel(strips, 0.58)];
