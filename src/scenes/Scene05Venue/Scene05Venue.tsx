@@ -6,9 +6,6 @@ import './scene05.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const destination = encodeURIComponent('Seaside Sunset Beach Resort, C88M+QPW, Caba, La Union, Philippines');
-const directionsUrl = `https://www.google.com/maps/dir/?api=1&destination=${destination}`;
-
 export function Scene05Venue() {
   const sceneRef = useRef<HTMLElement>(null);
   const { ceremony } = weddingContent;
@@ -56,7 +53,7 @@ export function Scene05Venue() {
             <h2 id="venue-title">Where We Say I Do</h2>
             <p className="venue__name">{ceremony.venue}</p>
             <p className="venue__location">{ceremony.location}</p>
-            <a className="venue__directions" href={directionsUrl}>
+            <a className="venue__directions" href={ceremony.directionsUrl}>
               Get directions <span aria-hidden="true">↗</span>
             </a>
           </header>

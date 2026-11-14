@@ -10,6 +10,7 @@ export const weddingContent = {
     timeZone: 'Asia/Manila',
     venue: 'Seaside Sunset Beach Resort',
     location: 'Caba, La Union, Philippines',
+    directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Seaside Sunset Beach Resort, C88M+QPW, Caba, La Union, Philippines')}`,
   },
   unveiling: {
     introduction: 'The wedding of',

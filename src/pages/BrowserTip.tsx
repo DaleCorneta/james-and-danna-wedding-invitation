@@ -1,23 +1,16 @@
 import { useLayoutEffect, useState } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './browser-tip.css';
-
-// Messenger identifies itself as Messenger, FBAN/Messenger, or with shared Facebook in-app markers.
-const inAppBrowser = /\b(?:Messenger|FBAN|FB_IAB|FBAV)\b/i;
 
 export function BrowserTip() {
   const [dismissed, setDismissed] = useState(false);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'manual'>('idle');
   const [manualLink, setManualLink] = useState('');
-  const detected = inAppBrowser.test(navigator.userAgent);
 
   useLayoutEffect(() => {
-    if (!detected) return;
     if (dismissed) document.getElementById('invitation-start')?.focus({ preventScroll: true });
-    ScrollTrigger.refresh(true);
-  }, [detected, dismissed, copyStatus]);
+  }, [dismissed]);
 
-  if (dismissed || !detected) return null;
+  if (dismissed) return null;
 
   async function copyLink() {
     const url = new URL(window.location.href);

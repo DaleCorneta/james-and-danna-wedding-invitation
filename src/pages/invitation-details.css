@@ -1,0 +1,48 @@
+.invitation-details {
+  padding: 16px max(16px, env(safe-area-inset-right)) max(40px, env(safe-area-inset-bottom))
+    max(16px, env(safe-area-inset-left));
+  background: #edead8;
+  color: #29382e;
+  font-family: 'Baskervville', Baskerville, Georgia, serif;
+  line-height: 1.55;
+}
+
+.invitation-details > * { max-width: 36rem; margin-inline: auto; }
+
+.invitation-details__opening,
+.invitation-details__response {
+  padding: clamp(16px, 5vw, 36px);
+  border: 1px solid #b5a578;
+  background: #faf5e7;
+  text-align: center;
+}
+
+.invitation-details h1 { margin-block: 10px 16px; font-size: clamp(1.65rem, 7vw, 2.75rem); line-height: 1.16; }
+.invitation-details h1 span { color: #796447; font-style: italic; }
+.invitation-details h2 { font-size: clamp(1.35rem, 6vw, 1.8rem); }
+.invitation-details h3 { margin-top: 14px; font-weight: bold; }
+.invitation-details img { width: 100%; height: auto; margin-top: 8px; }
+.invitation-details__response { margin-block: 12px; }
+.invitation-details__response p { margin-top: 8px; }
+
+.invitation-details a {
+  display: inline-grid;
+  min-height: 44px;
+  place-content: center;
+  padding-inline: 10px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.invitation-details .invitation-details__rsvp {
+  margin-top: 14px;
+  padding-inline: 20px;
+  background: #29382e;
+  color: #fff6e3;
+}
+
+.invitation-details details { padding: 0 14px; border-bottom: 1px solid #b5a578; }
+.invitation-details details[open] { padding-bottom: 14px; }
+.invitation-details summary { min-height: 44px; padding-block: 10px; cursor: pointer; }
+.invitation-details li { padding-block: 3px; }
+.invitation-details :focus-visible { outline: 2px solid #796447; outline-offset: 2px; }
