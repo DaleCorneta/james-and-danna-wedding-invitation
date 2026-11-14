@@ -1,0 +1,126 @@
+.closing {
+  position: relative;
+  margin-top: -200dvh;
+  min-height: calc(200dvh + 35svh);
+  color: #fff6e3;
+  font-family: 'Baskervville', Baskerville, Georgia, serif;
+  pointer-events: none;
+}
+
+.closing__stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  min-height: 100dvh;
+  padding: max(32px, env(safe-area-inset-top)) max(18px, env(safe-area-inset-right))
+    max(26px, env(safe-area-inset-bottom)) max(18px, env(safe-area-inset-left));
+  isolation: isolate;
+  overflow: clip;
+}
+
+.closing__coast {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 64%, #f7c982, transparent 58%),
+    linear-gradient(#263d38 4%, #536156 39%, #ae8366 61%);
+}
+
+.closing__sun {
+  position: absolute;
+  bottom: 33%;
+  inset-inline: 0;
+  width: clamp(80px, 24vmin, 192px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  background: linear-gradient(#fff6d2, #ffc876);
+  box-shadow: 0 0 56px #ffe0a284;
+}
+
+.closing__water {
+  position: absolute;
+  inset: 66% 0 0;
+  overflow: hidden;
+  border-top: 1px solid #e2bb8380;
+  background: linear-gradient(#66756a, #344e47 48%, #172c28);
+}
+
+.closing__reflection,
+.closing__ripples {
+  position: absolute;
+  inset: 0;
+}
+
+.closing__reflection {
+  background:
+    repeating-linear-gradient(0deg, #ffd589b0 0 1px, transparent 2px 6px),
+    radial-gradient(ellipse at center top, #ffe0a4, transparent 62%);
+  mask-image: radial-gradient(ellipse 25% 94% at center top, #000, transparent);
+  transform-origin: center top;
+}
+
+.closing__ripples {
+  inset: 4% -14% -26%;
+  background: repeating-radial-gradient(ellipse 86% 53% at 55% 155%, transparent 0 14px, #e2d4a734 15px, transparent 16px 21px);
+  mask-image: linear-gradient(transparent, #000 32%, transparent 96%);
+}
+
+.closing__dedication {
+  align-self: start;
+  margin-top: clamp(20px, 9svh, 100px);
+  text-align: center;
+}
+
+.closing__dedication h2,
+.closing__dedication time {
+  font-size: clamp(0.77rem, 2.6vw, 0.95rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.closing__names {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.12em 0.25em;
+  margin: 0.42em 0 0.3em;
+  font: 400 clamp(2.45rem, 7.4vw, 6.2rem) / 0.96 'Corinthia', 'Kunstler Script', 'Snell Roundhand', Georgia, cursive;
+  text-wrap: balance;
+}
+
+.closing__join {
+  color: #f4d8a1;
+  font: italic 400 0.43em / 1 Georgia, serif;
+}
+
+.closing__replay {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding-inline: 14px;
+  border: 1px solid #e7cf9a80;
+  background: #203631;
+  pointer-events: auto;
+}
+
+.closing__replay:focus-visible { outline: 2px solid #fff6e3; outline-offset: 4px; }
+
+@media (max-width: 540px) {
+  .closing__names { display: grid; justify-items: center; }
+}
+
+@media (max-height: 480px) {
+  .closing__dedication { margin-top: 0; }
+  .closing__names { font-size: clamp(2rem, 8vmin, 3.2rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .closing { min-height: 0; margin-top: 0; }
+  .closing__stage { position: relative; }
+}

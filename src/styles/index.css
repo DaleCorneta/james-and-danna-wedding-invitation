@@ -1,0 +1,59 @@
+@import 'tailwindcss';
+
+:root {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: #1c1917;
+  background: #faf9f6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.invitation-recovery {
+  min-height: 100svh;
+  display: grid;
+  place-content: center;
+  gap: 12px;
+  padding: 24px;
+  background: #e9edcf;
+  color: #18252b;
+  text-align: center;
+}
+
+.invitation-recovery h1 { font-size: clamp(1.75rem, 6vw, 3rem); }
+
+.invitation-recovery button,
+.invitation-recovery a {
+  display: grid;
+  min-height: 44px;
+  place-content: center;
+  text-decoration: underline;
+}

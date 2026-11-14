@@ -1,0 +1,83 @@
+.respond {
+  position: relative;
+  margin-top: -250dvh;
+  min-height: calc(350dvh + 18svh);
+  pointer-events: none;
+  color: #29382e;
+  font-family: 'Baskervville', Baskerville, Georgia, serif;
+}
+
+.respond__stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+    max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  overflow: clip;
+}
+
+.respond__light {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 79%, #fff5d7, transparent 63%),
+    linear-gradient(#f3eddd, #dec498);
+}
+
+.respond__card {
+  width: min(100%, 43rem);
+  padding: clamp(4px, 1.2vmin, 12px);
+  border: 1px solid #9e8964;
+  clip-path: inset(-32px);
+  background: var(--notes-paper);
+  box-shadow: 0 14px 26px #6e512a30;
+  text-align: center;
+}
+
+.respond__form-region {
+  position: relative;
+  display: grid;
+  place-items: center;
+  height: min(48rem, calc(100svh - 94px - env(safe-area-inset-top) - env(safe-area-inset-bottom)));
+  background: #f4e9cc;
+}
+
+.respond__form {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  pointer-events: auto;
+}
+
+.respond__status {
+  z-index: 1;
+  padding: 16px;
+  background: #f4e9cc;
+  pointer-events: none;
+}
+
+.respond__status p:first-child { font-size: 1.18rem; }
+
+.respond__fallback {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 8px;
+  font-size: 0.875rem;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  pointer-events: auto;
+}
+
+.respond__fallback:focus-visible { outline: 2px solid #29382e; outline-offset: -2px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .respond { min-height: 0; margin-top: 0; background: var(--notes-page); }
+  .respond__stage { position: relative; min-height: auto; }
+}

@@ -1,0 +1,98 @@
+.forever {
+  position: relative;
+  min-height: calc(300dvh + 42svh);
+  margin-top: -200dvh;
+  color: #3b3325;
+}
+
+.forever__stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+    max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  isolation: isolate;
+  overflow: clip;
+}
+
+.forever__light,
+.forever__horizon,
+.forever__flare {
+  position: absolute;
+  pointer-events: none;
+}
+
+.forever__light {
+  inset: 0;
+  z-index: -2;
+  background: radial-gradient(ellipse at 50% 39%, #fff3ce, transparent 56%),
+    linear-gradient(160deg, #ede8d8 18%, #e6d5ad 69%, #c69c63);
+}
+
+.forever__horizon {
+  inset: 73% 0 auto;
+  height: 22%;
+  z-index: -1;
+  border-top: 1px solid #ad834559;
+  background: repeating-linear-gradient(0deg, transparent 0 11px, #fff5d336 12px, transparent 13px 16px);
+  mask-image: linear-gradient(transparent, black 18%, transparent);
+}
+
+.forever__flare {
+  inset: 44% 0 auto;
+  height: 56%;
+  z-index: -1;
+  background: radial-gradient(ellipse at 50% 52%, #fff9df 0%, #ffe4a899 24%, transparent 66%);
+  transform-origin: 50% 52%;
+}
+
+.forever__layout {
+  display: grid;
+  justify-items: center;
+  width: min(100%, 68rem);
+  text-align: center;
+}
+
+.forever__mount {
+  width: min(81vw, 48dvh, 410px);
+  aspect-ratio: 1;
+}
+
+.forever__ring {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 16px 13px #6f4f2d3b);
+}
+
+.forever__details h2 {
+  margin-bottom: clamp(12px, 2svh, 22px);
+  font: 400 clamp(0.78rem, 2.5vw, 1rem) / 1.4 'Baskervville', Baskerville, Georgia, serif;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.forever__details time {
+  display: grid;
+  gap: clamp(10px, 2svh, 22px);
+  font: 400 clamp(1.8rem, 7vw, 4.8rem) / 1.05 'Baskervville', Baskerville, Georgia, serif;
+  text-wrap: balance;
+}
+
+.forever__details time span + span {
+  font-size: 0.51em;
+  letter-spacing: 0.11em;
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  .forever__layout { grid-template-columns: 0.85fr 1.15fr; align-items: center; }
+  .forever__mount { width: min(38vw, 72dvh); }
+  .forever__details time { font-size: clamp(1.65rem, 5.2vw, 3.5rem); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forever { min-height: 0; margin-top: 0; }
+  .forever__stage { position: relative; }
+}

@@ -1,0 +1,216 @@
+.families {
+  --families-ink: #29382e;
+  --families-rule: #9c885a75;
+  --families-serif: 'Baskervville', Baskerville, Georgia, serif;
+  position: relative;
+  margin-top: -200dvh;
+  color: var(--families-ink);
+  pointer-events: none;
+}
+
+.families__entrance {
+  min-height: calc(200dvh + 44svh);
+  pointer-events: none;
+}
+
+.families__stage {
+  position: sticky;
+  top: 0;
+  isolation: isolate;
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  padding: max(32px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+    max(32px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  overflow: clip;
+}
+
+.families__sheet,
+.families__crease {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.families__folds {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  perspective: 850px;
+  pointer-events: none;
+}
+
+.families__fold {
+  position: absolute;
+  inset-block: 0;
+  width: clamp(24px, 12vw, 190px);
+  background:
+    linear-gradient(90deg, #a3ac8a75, #dce0c8a6 76%, #f7f3df 98%),
+    var(--venue-paper);
+  border-inline-end: 1px solid var(--families-rule);
+  box-shadow: 6px 0 20px #4a4c3424;
+}
+
+.families__fold::after {
+  position: absolute;
+  inset: 12% 24% 12% 15%;
+  border: 1px solid #8a75476b;
+  border-radius: 50% 50% 45% 45% / 7% 7% 7% 7%;
+  content: '';
+}
+
+.families__fold--left {
+  left: 0;
+  transform-origin: right center;
+}
+
+.families__fold--right {
+  right: 0;
+  transform-origin: left center;
+  scale: -1 1;
+}
+
+.families__sheet {
+  background: var(--venue-paper);
+  background-position: center bottom;
+}
+
+.families__crease {
+  transform-origin: center bottom;
+  background:
+    linear-gradient(90deg, transparent 48%, #7f6b4422 49.9%, #fffdf0ad 50.05%, transparent 52%),
+    radial-gradient(ellipse at 50% 44%, transparent 54%, #9b9f7024);
+}
+
+.families__dedication {
+  width: min(100%, 52rem);
+  text-align: center;
+}
+
+.families__seal {
+  display: grid;
+  place-items: center;
+  width: 54px;
+  aspect-ratio: 1;
+  margin: 0 auto 18px;
+  border: 1px solid var(--families-rule);
+  outline: 1px solid var(--families-rule);
+  outline-offset: -5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 29%, #fffae6, #e6d7ad);
+  box-shadow: 0 3px 0 #b5a478, 0 6px 13px #5f573229;
+  color: #6c5732;
+  font: 400 0.85rem / 1 var(--families-serif);
+}
+
+.families__heading h2 {
+  font: 400 clamp(2.75rem, 9vw, 6rem) / 0.98 'Corinthia', 'Kunstler Script', 'Snell Roundhand', Georgia, cursive;
+  text-wrap: balance;
+}
+
+.families__parents {
+  display: grid;
+  gap: clamp(24px, 5svh, 48px);
+  margin: clamp(26px, 6svh, 72px) 0 0;
+}
+
+.families__parents dt {
+  margin-bottom: 9px;
+  font: 400 0.76rem / 1.5 var(--families-serif);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.families__parents dd {
+  font: 400 clamp(1.2rem, 4vw, 1.85rem) / 1.35 var(--families-serif);
+}
+
+.families__register {
+  position: relative;
+  pointer-events: auto;
+  background: var(--venue-paper);
+  padding: clamp(38px, 8svh, 96px) max(24px, env(safe-area-inset-right))
+    max(72px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+  text-align: center;
+}
+
+.families__register h3 {
+  font: 400 clamp(1.8rem, 6vw, 3.5rem) / 1.15 var(--families-serif);
+}
+
+.families__register-rule {
+  width: min(52%, 15rem);
+  height: 1px;
+  margin: 17px auto 0;
+  background: linear-gradient(90deg, transparent, #94794a 20% 80%, transparent);
+}
+
+.families__register-rail {
+  position: absolute;
+  inset: clamp(38px, 8svh, 96px) max(12px, env(safe-area-inset-right))
+    max(32px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+  border-inline: 1px solid var(--families-rule);
+  transform-origin: center top;
+  pointer-events: none;
+}
+
+.families__register ul {
+  width: min(100%, 58rem);
+  margin: clamp(22px, 5svh, 48px) auto 0;
+  padding: 0;
+  border-block: 1px solid var(--families-rule);
+  font: 400 clamp(1rem, 2.3vw, 1.13rem) / 1.55 var(--families-serif);
+  list-style: none;
+}
+
+.families__register li {
+  --impression: 0;
+  position: relative;
+  isolation: isolate;
+  break-inside: avoid;
+  padding: 0.55em 0.25em;
+}
+
+.families__register li::before {
+  position: absolute;
+  inset: 1px 0;
+  z-index: -1;
+  border-block: 1px solid #9e895850;
+  background: linear-gradient(90deg, transparent, #d4d9bdc9 22% 78%, transparent);
+  opacity: var(--impression);
+  transform: scaleX(calc(0.78 + var(--impression) * 0.22));
+  content: '';
+}
+
+.families__register-corner {
+  position: absolute;
+  top: clamp(38px, 8svh, 96px);
+  width: clamp(18px, 4vw, 52px);
+  aspect-ratio: 1;
+  border: 1px solid var(--families-rule);
+  border-radius: 65% 0 65% 0;
+  box-shadow: inset 3px 3px 0 #fffaf0, inset 4px 4px 0 #9c885a40;
+  background: linear-gradient(132deg, #edead4, #c3cba9);
+  pointer-events: none;
+}
+
+.families__register-corner--left { left: max(19px, env(safe-area-inset-left)); }
+.families__register-corner--right { right: max(19px, env(safe-area-inset-right)); scale: -1 1; }
+
+@media (max-width: 650px) {
+  .families__fold { width: clamp(18px, 7vw, 42px); }
+}
+
+@media (min-width: 650px), (orientation: landscape) and (min-width: 540px) {
+  .families__parents { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 760px) {
+  .families__register ul { columns: 2; column-gap: 38px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .families { margin-top: 0; }
+  .families__entrance { min-height: 0; }
+  .families__stage { position: relative; }
+}
