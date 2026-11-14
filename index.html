@@ -12,9 +12,44 @@
       content="The wedding invitation of Christian James Caguioa and Dana Cheyenne Cornita."
     />
     <title>Christian &amp; Dana | Wedding Invitation</title>
+    <style>
+      .invitation-loading {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 14px;
+        padding: 24px;
+        background: #f5efdf;
+        color: #29382e;
+        font-family: Georgia, serif;
+        text-align: center;
+      }
+      .invitation-loading__seal {
+        display: grid;
+        width: 76px;
+        aspect-ratio: 1;
+        place-items: center;
+        border: 1px solid #a18861;
+        border-radius: 50%;
+        color: #6e5638;
+        font-style: italic;
+      }
+      .invitation-loading--startup {
+        animation: invitation-startup-fallback 0s 8s forwards;
+      }
+      @keyframes invitation-startup-fallback { to { visibility: hidden; } }
+    </style>
+    <noscript><style>.invitation-loading--startup { display: none; }</style></noscript>
   </head>
   <body>
     <div id="root">
+      <div class="invitation-loading invitation-loading--startup" role="status">
+        <span class="invitation-loading__seal" aria-hidden="true">C &amp; D</span>
+        <p>Loading your invitation</p>
+      </div>
       <main class="invitation-recovery">
         <p>The wedding of</p>
         <h1>Christian James Caguioa &amp; Dana Cheyenne Cornita</h1>

@@ -1,5 +1,11 @@
 # Progress
 
+## Safari handoff and invitation loading
+
+- The in-app cover offers a direct Safari link on iPhone and iPad over HTTPS. The app-menu handoff remains available if Messenger blocks the link or guests prefer their configured browser.
+- An opaque loading screen covers startup and lazy loading, then clears after the initial curtain draw or the reduced-motion layout is ready. Static RSVP details remain accessible when JavaScript is disabled or the app fails to start.
+- Build, type-check and lint passed. Chromium and WebKit checked delayed scene loading, the opaque curtain at reveal, reduced motion, disabled JavaScript, canvas initialization failure, and both handoff URLs. The Safari handoff still needs a physical Messenger test.
+
 ## Facebook and Messenger compatibility
 
 - Detected Facebook and Messenger browsers display a dedicated browser handoff cover. Android offers an unpinned browser intent. The cover points guests to the app menu on iPhone or if the Android handoff is blocked.

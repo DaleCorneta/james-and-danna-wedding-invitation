@@ -1,3 +1,5 @@
+import { useCallback, useState } from 'react';
+import { InvitationLoading } from './InvitationLoading';
 import { Scene01Unveiling } from '../scenes/Scene01Unveiling/Scene01Unveiling';
 import { Scene02Moment } from '../scenes/Scene02Moment/Scene02Moment';
 import { Scene03Written } from '../scenes/Scene03Written/Scene03Written';
@@ -11,19 +13,25 @@ import { Scene10Respond } from '../scenes/Scene10Respond/Scene10Respond';
 import { Scene11Closing } from '../scenes/Scene11Closing/Scene11Closing';
 
 export default function CinematicInvitation() {
+  const [ready, setReady] = useState(false);
+  const finishOpening = useCallback(() => setReady(true), []);
+
   return (
     <>
-      <Scene01Unveiling />
-      <Scene02Moment />
-      <Scene03Written />
-      <Scene04Forever />
-      <Scene05Venue />
-      <Scene06Families />
-      <Scene07Entourage />
-      <Scene08Palette />
-      <Scene09Notes />
-      <Scene10Respond />
-      <Scene11Closing />
+      {!ready && <InvitationLoading />}
+      <div className={ready ? undefined : 'invitation-preparing'} inert={!ready}>
+        <Scene01Unveiling onReady={finishOpening} />
+        <Scene02Moment />
+        <Scene03Written />
+        <Scene04Forever />
+        <Scene05Venue />
+        <Scene06Families />
+        <Scene07Entourage />
+        <Scene08Palette />
+        <Scene09Notes />
+        <Scene10Respond />
+        <Scene11Closing />
+      </div>
     </>
   );
 }

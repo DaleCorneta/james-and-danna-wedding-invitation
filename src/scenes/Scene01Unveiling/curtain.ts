@@ -39,7 +39,7 @@ const colors = Array.from({ length: 1025 }, (_, index) => {
 
 export function drawCurtains(canvas: HTMLCanvasElement, width: number, height: number, open: number, touch: boolean) {
   const context = canvas.getContext('2d');
-  if (!context || !width || !height) return;
+  if (!context || !width || !height) return false;
 
   const ratio = Math.min(window.devicePixelRatio || 1, touch ? 1 : 1.5);
   const pixelWidth = Math.round(width * ratio);
@@ -88,4 +88,5 @@ export function drawCurtains(canvas: HTMLCanvasElement, width: number, height: n
     }
   }
 
+  return true;
 }

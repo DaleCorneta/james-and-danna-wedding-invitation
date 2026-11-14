@@ -8,7 +8,7 @@ import './scene01.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export function Scene01Unveiling() {
+export function Scene01Unveiling({ onReady }: { onReady: () => void }) {
   const sceneRef = useRef<HTMLElement>(null);
   const curtainRef = useRef<HTMLCanvasElement>(null);
   const { couple, ceremony, unveiling } = weddingContent;
@@ -31,7 +31,9 @@ export function Scene01Unveiling() {
       const frame = `${width}:${height}:${window.devicePixelRatio}:${open}:${touch.matches}`;
       if (frame === lastFrame) return;
       lastFrame = frame;
-      drawCurtains(canvas, width, height, open, touch.matches);
+      if (!drawCurtains(canvas, width, height, open, touch.matches)) {
+        throw new Error('The invitation curtain could not be drawn.');
+      }
     };
     const resize = new ResizeObserver(() => {
       width = stage.clientWidth;
@@ -97,12 +99,15 @@ export function Scene01Unveiling() {
         .to('.unveiling__folio--champagne', { xPercent: -6, yPercent: 3, rotation: 3, duration: 0.83 }, 1.42);
     });
 
+    const frame = requestAnimationFrame(onReady);
+
     return () => {
+      cancelAnimationFrame(frame);
       resize.disconnect();
       touch.removeEventListener('change', paint);
       media.revert();
     };
-  }, []);
+  }, [onReady]);
 
   return (
     <section id="invitation-start" className="unveiling" ref={sceneRef} aria-labelledby="wedding-title" tabIndex={-1}>

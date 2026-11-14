@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserTip } from './BrowserTip';
-import { InvitationDetails } from './InvitationDetails';
+import { InvitationLoading } from './InvitationLoading';
 
 const CinematicInvitation = lazy(() => import('./CinematicInvitation'));
 const inAppBrowser = /\b(?:Messenger|MessengerForAndroid|FBAN|FB_IAB|FBAV)\b/i;
@@ -11,7 +11,7 @@ export function HomePage() {
   }
 
   return (
-    <Suspense fallback={<InvitationDetails />}>
+    <Suspense fallback={<InvitationLoading />}>
       <CinematicInvitation />
     </Suspense>
   );
