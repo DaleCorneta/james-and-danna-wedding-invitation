@@ -7,7 +7,7 @@ const inAppBrowser = /\b(?:Messenger|MessengerForAndroid|FBAN|FB_IAB|FBAV)\b/i;
 
 export function HomePage() {
   if (inAppBrowser.test(navigator.userAgent)) {
-    return <><BrowserTip /><InvitationDetails /></>;
+    return <BrowserTip />;
   }
 
   return (

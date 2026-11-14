@@ -1,41 +1,52 @@
 .browser-tip {
-  padding: max(12px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
-    12px max(16px, env(safe-area-inset-left));
-  border-bottom: 1px solid #b5a578;
+  display: grid;
+  min-height: 100vh;
+  min-height: 100svh;
+  place-items: center;
+  padding: max(20px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+    max(20px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
   background: #f5efdf;
   color: #29382e;
 }
 
 .browser-tip__inner {
-  max-width: 42rem;
-  margin-inline: auto;
-  font-size: 0.9375rem;
-  line-height: 1.45;
+  width: min(100%, 28rem);
+  padding: clamp(20px, 6vw, 40px);
+  border: 1px solid #b5a578;
+  background: #faf5e7;
+  font-family: 'Baskervville', Baskerville, Georgia, serif;
+  line-height: 1.5;
+  text-align: center;
 }
 
-.browser-tip h2 { margin-bottom: 4px; font-size: 1.125rem; }
+.browser-tip h1 { margin-bottom: 12px; font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1.2; }
 
 .browser-tip__actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 4px 8px;
-  margin-top: 8px;
+  margin-top: 16px;
 }
 
-.browser-tip button {
+.browser-tip button,
+.browser-tip__actions a {
+  display: inline-flex;
+  align-items: center;
   min-height: 44px;
   padding-inline: 12px;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.browser-tip button:first-child {
+.browser-tip__actions > :first-child {
   background: #29382e;
   color: #fff6e3;
   text-decoration: none;
 }
 
 .browser-tip button:focus-visible,
+.browser-tip a:focus-visible,
 .browser-tip input:focus-visible { outline: 2px solid #29382e; outline-offset: 2px; }
 
 .browser-tip [role='status']:not(:empty) { margin-top: 8px; }

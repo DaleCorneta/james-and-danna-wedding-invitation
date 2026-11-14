@@ -1,38 +1,42 @@
-import { useLayoutEffect, useState } from 'react';
+import { useState } from 'react';
 import './browser-tip.css';
 
+function invitationUrl() {
+  const url = new URL(window.location.href);
+  url.searchParams.delete('fbclid');
+  return url;
+}
+
 export function BrowserTip() {
-  const [dismissed, setDismissed] = useState(false);
   const [copyStatus, setCopyStatus] = useState<'idle' | 'copied' | 'manual'>('idle');
   const [manualLink, setManualLink] = useState('');
 
-  useLayoutEffect(() => {
-    if (dismissed) document.getElementById('invitation-start')?.focus({ preventScroll: true });
-  }, [dismissed]);
-
-  if (dismissed) return null;
+  const url = invitationUrl();
+  const scheme = url.protocol.slice(0, -1);
+  const browserIntent = /\bAndroid\b/i.test(navigator.userAgent) && (scheme === 'https' || scheme === 'http')
+    ? `intent://${url.host}${url.pathname}${url.search}${url.hash}#Intent;scheme=${scheme};action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;S.browser_fallback_url=${encodeURIComponent(url.href)};end`
+    : undefined;
 
   async function copyLink() {
-    const url = new URL(window.location.href);
-    url.searchParams.delete('fbclid');
+    const link = invitationUrl().href;
 
     try {
-      await navigator.clipboard.writeText(url.href);
+      await navigator.clipboard.writeText(link);
       setCopyStatus('copied');
     } catch {
-      setManualLink(url.href);
+      setManualLink(link);
       setCopyStatus('manual');
     }
   }
 
   return (
-    <aside className="browser-tip" aria-labelledby="browser-tip-title">
+    <section className="browser-tip" aria-labelledby="browser-tip-title">
       <div className="browser-tip__inner">
-        <h2 id="browser-tip-title">Open in your browser</h2>
-        <p>Tap the app’s menu (⋯) and choose Open in browser if available. You can also copy the link and paste it into Safari or Chrome.</p>
+        <h1 id="browser-tip-title">Open the wedding invitation in your browser</h1>
+        <p>{browserIntent ? 'If the button doesn’t open your browser, use' : 'Use'} the app menu to choose <strong>Open in browser</strong>, if available. You can also copy the link and paste it into your browser.</p>
         <div className="browser-tip__actions">
+          {browserIntent && <a href={browserIntent}>Open in default browser</a>}
           <button type="button" onClick={copyLink}>Copy link</button>
-          <button type="button" onClick={() => setDismissed(true)}>Continue here</button>
         </div>
         <p role="status">
           {copyStatus === 'copied' && 'Link copied.'}
@@ -47,6 +51,6 @@ export function BrowserTip() {
           />
         )}
       </div>
-    </aside>
+    </section>
   );
 }

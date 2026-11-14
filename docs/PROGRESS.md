@@ -2,9 +2,9 @@
 
 ## Facebook and Messenger compatibility
 
-- Detected in-app browsers get a native-scrolling invitation with the portrait, ceremony, directions, guest notes, parents, sponsors and entourage. The RSVP opens as a top-level page. The dismissible browser tip and copy-link fallback remain available.
-- The animated scenes and embedded RSVP load separately in standalone browsers. Detected in-app browsers skip the roughly 53 kB gzipped animation script and its stylesheet.
-- Build, type-check and lint passed. Chromium and WebKit verified simulated Facebook and Messenger in portrait and landscape, including details panels, clipboard fallback, no animation requests, direct RSVP navigation and Back. Standalone mobile and desktop loaded the animated scenes and test RSVP frame. Physical in-app browsers and live submission remain unverified.
+- Detected Facebook and Messenger browsers display a dedicated browser handoff cover. Android offers an unpinned browser intent. The app menu and copy-link fallback are available on all devices.
+- Standalone browsers load the cinematic invitation and its embedded RSVP. The in-app cover requests neither the cinematic assets nor the portrait and mounts no RSVP frame.
+- Build, type-check and lint passed. Chromium and WebKit verified the cover for simulated Android Messenger, iPhone Messenger and Android Facebook, the Android intent URL, manual copy, responsive fit and standalone curtain loading. Physical app-to-browser handoff remains unverified.
 
 ## Mobile scrolling
 
